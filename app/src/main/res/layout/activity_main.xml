@@ -12,26 +12,28 @@
         android:id="@+id/avatar"
         android:layout_width="@dimen/avatar_size"
         android:layout_height="@dimen/avatar_size"
-        app:layout_constraintVertical_bias="0"
         android:contentDescription="@string/avatar"
         android:scaleType="centerCrop"
         android:src="@drawable/avatar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:hint="@string/name"
+        app:boxStrokeWidth="3dp"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
-        android:hint="@string/name"
-        app:layout_constraintTop_toBottomOf="@id/avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/default_margin">
+        app:layout_constraintTop_toBottomOf="@id/avatar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -41,14 +43,16 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phone"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/phone"
+        app:boxBackgroundColor="#BB86FC"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
-        android:hint="@string/phone"
-        app:layout_constraintTop_toBottomOf="@id/name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -60,30 +64,31 @@
         android:id="@+id/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/phone"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@id/phone">
 
         <TextView
             android:id="@+id/header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
-            android:text="@string/gender" />
+            android:text="@string/gender"
+            android:theme="@style/TitlesPrimary" />
 
         <RadioButton
             android:id="@+id/genderM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
-            android:text="@string/genderM" />
+            android:text="@string/genderM"
+            android:theme="@style/DefaultText" />
+
         <RadioButton
             android:id="@+id/genderF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
-            android:text="@string/genderF" />
+            android:text="@string/genderF"
+            android:theme="@style/DefaultText" />
 
     </RadioGroup>
 
@@ -91,37 +96,39 @@
         android:id="@+id/noticeSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
         android:checked="true"
-        android:textSize="@dimen/text_size"
-        app:layout_constraintTop_toBottomOf="@id/gender"
+        android:text="@string/noticeSwitchTitle"
+        android:theme="@style/DefaultText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/default_margin"
-        android:text="@string/noticeSwitchTitle"/>
+        app:layout_constraintTop_toBottomOf="@id/gender" />
 
     <LinearLayout
         android:id="@+id/noticeCheckBoxes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/noticeSwitch"
+        android:layout_marginTop="@dimen/default_margin"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/default_margin"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@id/noticeSwitch">
 
-        <CheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/noticeCheckAutorize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
             android:checked="true"
-            android:text="@string/noticeCheckAutorizeTitle" />
-        <CheckBox
+            android:text="@string/noticeCheckAutorizeTitle"
+            android:theme="@style/CheckBoxStyle" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/noticeCheckNovelty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
-            android:text="@string/noticeCheckNoveltyTitle" />
+            android:checked="false"
+            android:text="@string/noticeCheckNoveltyTitle"
+            android:theme="@style/CheckBoxStyle" />
 
     </LinearLayout>
 
@@ -129,35 +136,35 @@
         android:id="@+id/scores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/noticeCheckBoxes"
+        android:layout_marginTop="@dimen/default_margin"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/default_margin"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@id/noticeCheckBoxes">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/noticeCheckBoxes"
+            android:layout_marginTop="@dimen/default_margin"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/default_margin"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toBottomOf="@id/noticeCheckBoxes">
 
             <TextView
                 android:id="@+id/scoresTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="@string/scoresTitle" />
+                android:text="@string/scoresTitle"
+                android:theme="@style/TitlesPrimary" />
 
             <TextView
                 android:id="@+id/scoresValues"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:textSize="@dimen/text_size"
-                android:text="50/100" />
+                android:theme="@style/TitlesSecondary"
+                tools:text="44/100" />
 
         </LinearLayout>
 
@@ -165,12 +172,12 @@
             android:id="@+id/scoresProgress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
             android:indeterminate="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:progress="50"
-            android:layout_marginTop="@dimen/default_margin" />
+            tools:progress="44" />
 
     </LinearLayout>
 
@@ -178,11 +185,11 @@
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/scores"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/save"
+        android:theme="@style/DefaultText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/default_margin"
-        android:textSize="@dimen/text_size"
-        android:text="@string/save"/>
+        app:layout_constraintTop_toBottomOf="@id/scores" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
